@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { padding: 10px 12px; color: var(--uxp-host-text-color); font-size: 12px; }
+    .section { margin-bottom: 14px; }
+    .row { display: flex; align-items: center; justify-content: space-between; }
+    .label { color: var(--uxp-host-text-color-secondary); }
+    .value { min-width: 34px; text-align: right; }
+    sp-slider { width: 100%; }
+    sp-button { width: 100%; margin-top: 6px; }
+    #lineArtName { font-weight: bold; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    #status { margin-top: 10px; min-height: 32px; color: var(--uxp-host-text-color-secondary); }
+    #status.error { color: #ff6b6b; }
+    hr { border: none; border-top: 1px solid var(--uxp-host-border-color); margin: 12px 0; }
+    .hint { color: var(--uxp-host-text-color-secondary); font-size: 11px; margin-top: 4px; }
+  </style>
+</head>
+<body>
+  <div class="section">
+    <div class="label">Line art layer</div>
+    <div id="lineArtName">(active layer)</div>
+    <sp-button id="btnSetLine" variant="secondary" quiet>Use active layer as line art</sp-button>
+  </div>
+
+  <div class="section">
+    <div class="row"><span class="label">Close gaps up to</span><span class="value" id="gapVal">8 px</span></div>
+    <sp-slider id="gap" min="0" max="40" value="8" step="1"></sp-slider>
+
+    <div class="row"><span class="label">Line threshold</span><span class="value" id="inkVal">50%</span></div>
+    <sp-slider id="ink" min="5" max="95" value="50" step="1"></sp-slider>
+
+    <div class="row"><span class="label">Ignore regions smaller than</span><span class="value" id="minVal">20 px</span></div>
+    <sp-slider id="minRegion" min="1" max="500" value="20" step="1"></sp-slider>
+
+    <sp-checkbox id="underLines" checked>Extend fill under the lines</sp-checkbox><br>
+    <sp-checkbox id="skipOutside" checked>Leave outside area empty</sp-checkbox>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <sp-button id="btnFlatAll" variant="cta">Flat everything</sp-button>
+    <div class="hint">Fills every closed area with its own colour on a "Flats" layer.</div>
+  </div>
+
+  <div class="section">
+    <sp-button id="btnFillMarked" variant="primary">Fill marked areas (FG colour)</sp-button>
+    <sp-button id="btnSelectMarked" variant="secondary">Select marked areas</sp-button>
+    <div class="hint">Mark areas with the Color Sampler tool (Shift+I) or a rough selection that touches them.</div>
+    <sp-checkbox id="clearSamplers" checked>Remove color samplers after use</sp-checkbox>
+  </div>
+
+  <div id="status"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Gap fill test</title>
+<style>body{font-family:sans-serif;background:#ddd;margin:16px}canvas{background:#fff;margin:4px;border:1px solid #999}</style>
+</head><body>
+<div>Close gaps up to (px) <input id="gap" type="number" value="8" style="width:50px"> <button id="run">Run</button> <span id="info"></span></div>
+<canvas id="src" width="400" height="300"></canvas>
+<canvas id="dst" width="400" height="300"></canvas>
+<canvas id="naive" width="400" height="300"></canvas>
+<script src="../fillcore.js"></script>
+<script>
+const W = 400, H = 300;
+const s = document.getElementById("src").getContext("2d");
+s.fillStyle = "#fff"; s.fillRect(0, 0, W, H);
+s.strokeStyle = "#000"; s.lineWidth = 3; s.lineCap = "butt";
+// circle with a 5px gap
+s.beginPath(); s.arc(100, 100, 60, 0.1, Math.PI * 2 - 0.0); s.stroke();
+// square with a 6px gap on the top edge
+s.beginPath(); s.moveTo(200, 40); s.lineTo(270, 40); s.moveTo(276, 40); s.lineTo(340, 40); s.lineTo(340, 160); s.lineTo(200, 160); s.closePath(); s.stroke();
+// line splitting the square, almost touching (4px gap)
+s.beginPath(); s.moveTo(270, 44); s.lineTo(270, 156); s.stroke();
+// thin closed strip (two parallel lines 6px apart, closed)
+s.beginPath(); s.rect(40, 220, 300, 6); s.stroke();
+// antialiased sketchy triangle with a 7px gap
+s.lineWidth = 2; s.beginPath(); s.moveTo(60, 200); s.lineTo(120, 180); s.moveTo(127, 180); s.lineTo(180, 200); s.lineTo(60, 200); s.stroke();
+
+function run() {
+  const gap = +document.getElementById("gap").value;
+  const img = s.getImageData(0, 0, W, H);
+  const t0 = performance.now();
+  const seg = FillCore.segment(img.data, W, H, { gapSize: gap / 2, minRegion: 20, skipOutside: true });
+  const t1 = performance.now();
+  const flats = FillCore.renderFlats(seg, W, H);
+  const out = new ImageData(new Uint8ClampedArray(flats.buffer), W, H);
+  const d = document.getElementById("dst").getContext("2d");
+  d.clearRect(0, 0, W, H); d.putImageData(out, 0, 0);
+  d.globalCompositeOperation = "multiply"; d.drawImage(document.getElementById("src"), 0, 0); d.globalCompositeOperation = "source-over";
+  // naive (gap 0) for comparison
+  const seg0 = FillCore.segment(img.data, W, H, { gapSize: 0, minRegion: 20, skipOutside: true });
+  const n = document.getElementById("naive").getContext("2d");
+  n.putImageData(new ImageData(new Uint8ClampedArray(FillCore.renderFlats(seg0, W, H).buffer), W, H), 0, 0);
+  n.globalCompositeOperation = "multiply"; n.drawImage(document.getElementById("src"), 0, 0); n.globalCompositeOperation = "source-over";
+  const res = { regions: seg.count, naiveRegions: seg0.count, ms: Math.round(t1 - t0) };
+  document.getElementById("info").textContent = JSON.stringify(res);
+  window.result = res;
+}
+// redraw dst without the src overlay bug: just multiply
+document.getElementById("run").onclick = run;
+run();
+</script>
+</body></html>

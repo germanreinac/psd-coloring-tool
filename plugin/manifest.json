@@ -1,0 +1,25 @@
+{
+  "manifestVersion": 5,
+  "id": "com.local.smartflatfill",
+  "name": "Smart Flat Fill",
+  "version": "1.0.0",
+  "main": "index.html",
+  "host": {
+    "app": "PS",
+    "minVersion": "24.2.0"
+  },
+  "entrypoints": [
+    {
+      "type": "panel",
+      "id": "smartFlatFillPanel",
+      "label": { "default": "Smart Flat Fill" },
+      "minimumSize": { "width": 230, "height": 320 },
+      "maximumSize": { "width": 2000, "height": 2000 },
+      "preferredDockedSize": { "width": 270, "height": 520 },
+      "preferredFloatingSize": { "width": 270, "height": 520 }
+    }
+  ],
+  "requiredPermissions": {
+    "allowCodeGenerationFromStrings": false
+  }
+}
