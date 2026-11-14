@@ -13,7 +13,7 @@ import time
 
 import numpy as np
 
-from . import export, extract, hints, palette, panels, regions
+from . import export, extract, hints, palette, panels, regions, verify
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROTECTED = "whole project"
@@ -79,7 +79,9 @@ def main():
 
     print("Adding Flats to each panel's color folder (saving takes a few minutes)")
     flats = panels.panel_flat_images(rgb, alpha, masks)
-    panels.write_into_psd(work, meta["panel_paths"], flats, cfg, hint_seed=None)
+    from psd_tools import PSDImage
+    before = verify.snapshot(PSDImage.open(work), cfg)
+    panels.write_into_psd(work, meta["panel_paths"], flats, cfg, hint_seed=None, before=before)
     in_panels = np.zeros_like(alpha)
     for m in masks.values():
         in_panels |= m

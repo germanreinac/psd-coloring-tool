@@ -1,4 +1,6 @@
 *.ccx
 output/
+whole project/
 __pycache__/
 *.saving
+*.part

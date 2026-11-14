@@ -48,10 +48,19 @@ def panel2(a):  # buildings
 def main(path):
     psd = PSDImage.new("RGB", (W, H), depth=8)
     add_rgba_layer(psd, Image.new("RGBA", (W, H), (255, 255, 255, 255)), "Paper")
+    boxes = {"1": (80, 80, 1520, 950), "2": (80, 1050, 1520, 1920)}
     for name, draw in (("2", panel2), ("1", panel1)):
         g = psd.create_group(name=name)
-        g.create_group(name="color")
+        if name == "1":  # panel 2 has no color folder, so the tool has to make one
+            c = g.create_group(name="color")
+            add_rgba_layer(c, Image.new("RGBA", (40, 40), (200, 80, 80, 255)), "old paint", left=100, top=100)
         add_rgba_layer(g, lines_layer(draw), "lines")
+        x0, y0, x1, y1 = boxes[name]  # panel folders are masked to the panel, like the real pages
+        m = np.zeros((H, W), np.uint8)
+        m[y0:y1, x0:x1] = 255
+        # a new folder's two records share one channel list in psd-tools; split them or the mask corrupts the file
+        g._channels = type(g._channels)(list(g._channels))
+        g.create_mask(Image.fromarray(m, "L"), top=0, left=0)
     lay = psd.create_group(name="layout")
     add_rgba_layer(lay, lines_layer(border), "borders")
     psd.save(path)

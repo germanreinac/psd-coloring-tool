@@ -65,5 +65,7 @@
   "sliver_width_px": 14,
   "sliver_width_px_help": "Leftover strips thinner than this (in pixels), e.g. the gap between two lines that almost touch, don't get their own colour: they join the neighbour they share the most edge with.",
   "sliver_min_px": 600,
-  "sliver_min_px_help": "Crumbs smaller than this many pixels also join their biggest neighbour instead of getting their own colour."
+  "sliver_min_px_help": "Crumbs smaller than this many pixels also join their biggest neighbour instead of getting their own colour.",
+  "add_hint_layer": false,
+  "_add_hint_layer": "true = also add an empty 'Flat hints' layer at the top of the page for your colour scribbles. false = add nothing but Flats."
 }

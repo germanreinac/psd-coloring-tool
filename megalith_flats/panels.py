@@ -132,9 +132,10 @@ def panel_flat_images(rgb, alpha, masks):
     return res
 
 
-def write_into_psd(path, panel_paths, flats, cfg, hint_seed=None, log=print):
+def write_into_psd(path, panel_paths, flats, cfg, hint_seed=None, log=print, before=None):
     """Edit the page copy in place: put a 'Flats' layer at the bottom of each panel's color folder
-    (replacing the Flats from an earlier run), and make sure the page has a 'Flat hints' layer on top.
+    (replacing the Flats from an earlier run). Nothing else in the page is touched. With `add_hint_layer`
+    switched on, an empty 'Flat hints' layer is also added on top.
     If a panel has no color folder directly inside it (e.g. split into FG/BG), a new 'color' folder is
     made at the bottom of the panel so the flats sit under all of that panel's line art."""
     import os
@@ -168,7 +169,7 @@ def write_into_psd(path, panel_paths, flats, cfg, hint_seed=None, log=print):
     def has_hint(group):
         return any(has_hint(l) if l.is_group() else word in l.name.lower() for l in group)
 
-    if not has_hint(psd):
+    if cfg.get("add_hint_layer", False) and not has_hint(psd):
         if hint_seed is not None and hint_seed[..., 3].any():
             ys, xs = np.where(hint_seed[..., 3] > 0)
             y0, y1, x0, x1 = ys.min(), ys.max() + 1, xs.min(), xs.max() + 1
@@ -181,5 +182,13 @@ def write_into_psd(path, panel_paths, flats, cfg, hint_seed=None, log=print):
     tmp = path + ".saving"
     psd.save(tmp)
     del psd
+    if before is not None:  # prove nothing but Flats changed before the page is replaced
+        from . import verify
+        diffs = verify.compare(before, PSDImage.open(tmp), cfg, before_psd=PSDImage.open(path))
+        if diffs:
+            os.remove(tmp)
+            raise SystemExit("Not saved: the result would differ from the original in more than the Flats layers:\n  "
+                             + "\n  ".join(diffs[:40]))
+        log(f"  checked {len(before['layers'])} layers and folders: nothing changed apart from the added Flats")
     os.replace(tmp, path)  # only replace the page once the save has fully worked
     return notes
