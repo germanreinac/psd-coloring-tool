@@ -1,0 +1,6 @@
+numpy
+scipy
+pillow
+opencv-python-headless
+# add_rgba_layer uses a private psd-tools helper; tested with this version
+psd-tools==1.26.1

@@ -1,0 +1,386 @@
+{
+ "_help": "Megalith colour key. characters = Dji/Skit parts. scene = named flat colours taken from the finished Chapter 1 pages. town = older 16-colour list. Edit RGB values and rerun.",
+ "characters": {
+  "Dji fur": [
+   218,
+   217,
+   218
+  ],
+  "Dji horns": [
+   175,
+   163,
+   159
+  ],
+  "Dji nose": [
+   239,
+   169,
+   169
+  ],
+  "Dji hood": [
+   205,
+   70,
+   105
+  ],
+  "Dji sweater": [
+   238,
+   192,
+   147
+  ],
+  "Dji collar": [
+   196,
+   120,
+   92
+  ],
+  "Dji tag": [
+   232,
+   222,
+   132
+  ],
+  "Dji shorts": [
+   140,
+   141,
+   140
+  ],
+  "Skit hair": [
+   254,
+   146,
+   146
+  ],
+  "Skit skin": [
+   252,
+   228,
+   187
+  ],
+  "Skit beak": [
+   241,
+   198,
+   129
+  ],
+  "Skit shirt": [
+   231,
+   231,
+   231
+  ],
+  "Skit legs": [
+   214,
+   214,
+   220
+  ],
+  "Skit skirt": [
+   196,
+   98,
+   140
+  ],
+  "Skit pattern": [
+   224,
+   208,
+   129
+  ],
+  "Skit boots": [
+   154,
+   104,
+   116
+  ],
+  "Skit backpack": [
+   112,
+   104,
+   66
+  ]
+ },
+ "town": [
+  [
+   255,
+   227,
+   184
+  ],
+  [
+   216,
+   205,
+   212
+  ],
+  [
+   215,
+   254,
+   228
+  ],
+  [
+   216,
+   239,
+   255
+  ],
+  [
+   207,
+   163,
+   210
+  ],
+  [
+   235,
+   197,
+   190
+  ],
+  [
+   233,
+   223,
+   228
+  ],
+  [
+   155,
+   185,
+   247
+  ],
+  [
+   182,
+   148,
+   172
+  ],
+  [
+   234,
+   164,
+   227
+  ],
+  [
+   245,
+   180,
+   143
+  ],
+  [
+   220,
+   178,
+   174
+  ],
+  [
+   131,
+   102,
+   106
+  ],
+  [
+   143,
+   179,
+   190
+  ],
+  [
+   211,
+   116,
+   123
+  ],
+  [
+   136,
+   156,
+   150
+  ]
+ ],
+ "scene": {
+  "pale sky": [
+   235,
+   236,
+   241
+  ],
+  "cream": [
+   253,
+   229,
+   187
+  ],
+  "blush": [
+   250,
+   215,
+   214
+  ],
+  "lilac grey": [
+   224,
+   213,
+   222
+  ],
+  "mint": [
+   215,
+   250,
+   223
+  ],
+  "warm grey": [
+   207,
+   199,
+   205
+  ],
+  "skin beige": [
+   231,
+   202,
+   186
+  ],
+  "salmon blush": [
+   222,
+   180,
+   178
+  ],
+  "mauve": [
+   201,
+   165,
+   200
+  ],
+  "candy pink": [
+   229,
+   179,
+   215
+  ],
+  "dusty mauve": [
+   181,
+   154,
+   174
+  ],
+  "rose beige": [
+   201,
+   170,
+   171
+  ],
+  "sand": [
+   189,
+   163,
+   146
+  ],
+  "peach": [
+   237,
+   187,
+   144
+  ],
+  "lavender": [
+   201,
+   155,
+   221
+  ],
+  "aqua": [
+   159,
+   219,
+   212
+  ],
+  "steel blue": [
+   138,
+   182,
+   193
+  ],
+  "orchid": [
+   239,
+   164,
+   233
+  ],
+  "periwinkle": [
+   157,
+   186,
+   241
+  ],
+  "custard": [
+   248,
+   220,
+   150
+  ],
+  "hot pink": [
+   221,
+   135,
+   207
+  ],
+  "raspberry": [
+   214,
+   127,
+   166
+  ],
+  "terracotta": [
+   224,
+   136,
+   113
+  ],
+  "coral": [
+   253,
+   147,
+   146
+  ],
+  "jade": [
+   150,
+   226,
+   173
+  ],
+  "turquoise": [
+   87,
+   202,
+   174
+  ],
+  "plum": [
+   176,
+   124,
+   175
+  ],
+  "rose wood": [
+   175,
+   134,
+   131
+  ],
+  "dark wood": [
+   159,
+   115,
+   100
+  ],
+  "teal grey": [
+   136,
+   150,
+   148
+  ],
+  "slate": [
+   137,
+   113,
+   130
+  ],
+  "deep blue": [
+   120,
+   128,
+   184
+  ],
+  "charcoal": [
+   109,
+   92,
+   113
+  ],
+  "magenta": [
+   215,
+   95,
+   169
+  ],
+  "sky cyan": [
+   75,
+   200,
+   219
+  ]
+ },
+ "auto_tiers": {
+  "_help": "Colours used for areas nobody gave a hint, picked by size so big areas get soft tones and small parts get accents.",
+  "large": [
+   "pale sky",
+   "cream",
+   "blush",
+   "lilac grey",
+   "warm grey",
+   "candy pink",
+   "mauve"
+  ],
+  "medium": [
+   "mauve",
+   "candy pink",
+   "dusty mauve",
+   "rose beige",
+   "sand",
+   "peach",
+   "lavender",
+   "salmon blush",
+   "lilac grey",
+   "skin beige",
+   "steel blue"
+  ],
+  "small": [
+   "hot pink",
+   "raspberry",
+   "terracotta",
+   "coral",
+   "plum",
+   "orchid",
+   "steel blue",
+   "aqua",
+   "custard",
+   "lavender"
+  ]
+ }
+}

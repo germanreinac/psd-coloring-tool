@@ -1,0 +1,15 @@
+{
+ "Dji fur|head": [[850, 300]],
+ "Skit shirt|eyes": [[800, 380], [900, 380]],
+ "Dji hood|body above belt": [[850, 620]],
+ "Dji shorts|body below belt": [[850, 800]],
+ "custard|sun": [[1300, 250]],
+ "pale sky|p1 sky": [[300, 300]],
+ "sand|p1 ground": [[300, 800], [1300, 800]],
+ "pale sky|p2 sky": [[1300, 1300]],
+ "cream|p2 ground": [[800, 1800]],
+ "peach|whole left building": [{"area": [[190, 1290], [610, 1290], [610, 1710], [190, 1710]]}],
+ "steel blue|left building window": [[350, 1450]],
+ "lavender|right building": [[900, 1500]],
+ "dusty mauve|roof": [[900, 1160]]
+}

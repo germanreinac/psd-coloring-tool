@@ -1,1 +1,4 @@
 *.ccx
+output/
+__pycache__/
+*.saving
