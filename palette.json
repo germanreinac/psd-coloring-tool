@@ -1,87 +1,87 @@
 {
- "_help": "Megalith colour key. characters = Dji/Skit parts. scene = named flat colours taken from the finished Chapter 1 pages. town = older 16-colour list. Edit RGB values and rerun.",
+ "_help": "Megalith colour key. characters = Skit (the cat) and Dji (the bird). cast = other recurring characters. scene = named flat colours taken from the finished Chapter 1 pages. town = older 16-colour list. Edit RGB values and rerun.",
  "characters": {
-  "Dji fur": [
+  "Skit fur": [
    218,
    217,
    218
   ],
-  "Dji horns": [
+  "Skit horns": [
    175,
    163,
    159
   ],
-  "Dji nose": [
+  "Skit nose": [
    239,
    169,
    169
   ],
-  "Dji hood": [
+  "Skit hood": [
    205,
    70,
    105
   ],
-  "Dji sweater": [
+  "Skit sweater": [
    238,
    192,
    147
   ],
-  "Dji collar": [
+  "Skit collar": [
    196,
    120,
    92
   ],
-  "Dji tag": [
+  "Skit tag": [
    232,
    222,
    132
   ],
-  "Dji shorts": [
+  "Skit shorts": [
    140,
    141,
    140
   ],
-  "Skit hair": [
+  "Dji hair": [
    254,
    146,
    146
   ],
-  "Skit skin": [
+  "Dji skin": [
    252,
    228,
    187
   ],
-  "Skit beak": [
+  "Dji beak": [
    241,
    198,
    129
   ],
-  "Skit shirt": [
+  "Dji shirt": [
    231,
    231,
    231
   ],
-  "Skit legs": [
+  "Dji legs": [
    214,
    214,
    220
   ],
-  "Skit skirt": [
+  "Dji skirt": [
    196,
    98,
    140
   ],
-  "Skit pattern": [
+  "Dji pattern": [
    224,
    208,
    129
   ],
-  "Skit boots": [
+  "Dji boots": [
    154,
    104,
    116
   ],
-  "Skit backpack": [
+  "Dji backpack": [
    112,
    104,
    66
@@ -381,6 +381,154 @@
    "aqua",
    "custard",
    "lavender"
+  ]
+ },
+ "aliases": {
+  "_help": "Older colour plans used the two names the wrong way round (the cat was called Dji, the bird Skit). These old names still work.",
+  "Dji fur": "Skit fur",
+  "Dji horns": "Skit horns",
+  "Dji nose": "Skit nose",
+  "Dji hood": "Skit hood",
+  "Dji sweater": "Skit sweater",
+  "Dji collar": "Skit collar",
+  "Dji tag": "Skit tag",
+  "Dji shorts": "Skit shorts",
+  "Skit hair": "Dji hair",
+  "Skit skin": "Dji skin",
+  "Skit beak": "Dji beak",
+  "Skit shirt": "Dji shirt",
+  "Skit legs": "Dji legs",
+  "Skit skirt": "Dji skirt",
+  "Skit pattern": "Dji pattern",
+  "Skit boots": "Dji boots",
+  "Skit backpack": "Dji backpack"
+ },
+ "cast": {
+  "_help": "Other recurring characters. Colours measured from the character sheets; correct them here if they are off.",
+  "Chalky fur": [
+   158,
+   164,
+   175
+  ],
+  "Chalky patches": [
+   134,
+   113,
+   119
+  ],
+  "Chalky nose": [
+   239,
+   169,
+   169
+  ],
+  "Chalky jacket": [
+   154,
+   143,
+   136
+  ],
+  "Chalky jacket pattern": [
+   153,
+   202,
+   176
+  ],
+  "Chalky overalls": [
+   155,
+   185,
+   239
+  ],
+  "Chalky shoes": [
+   226,
+   176,
+   150
+  ],
+  "Skipjack skin": [
+   221,
+   174,
+   239
+  ],
+  "Skipjack hoodie": [
+   191,
+   215,
+   251
+  ],
+  "Skipjack trousers": [
+   243,
+   224,
+   182
+  ],
+  "Skipjack boots": [
+   156,
+   174,
+   196
+  ],
+  "Skipjack boot trim": [
+   195,
+   179,
+   85
+  ],
+  "Skipjack basket": [
+   153,
+   128,
+   129
+  ],
+  "Skipjack leaves": [
+   191,
+   192,
+   145
+  ],
+  "Donnie head": [
+   192,
+   211,
+   216
+  ],
+  "Donnie jacket": [
+   226,
+   176,
+   249
+  ],
+  "Donnie yoke": [
+   245,
+   228,
+   175
+  ],
+  "Donnie legs": [
+   245,
+   228,
+   175
+  ],
+  "Magus skin": [
+   187,
+   138,
+   153
+  ],
+  "Magus hat": [
+   155,
+   206,
+   210
+  ],
+  "Magus cape": [
+   154,
+   167,
+   184
+  ],
+  "Magus legs": [
+   226,
+   193,
+   176
+  ],
+  "Barkus fur": [
+   190,
+   146,
+   132
+  ],
+  "Barkus ears": [
+   224,
+   187,
+   188
+  ],
+  "Barkus apron": [
+   229,
+   234,
+   237
   ]
  }
 }

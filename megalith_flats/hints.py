@@ -27,7 +27,7 @@ DOT_R = 10
 
 def key_colours(key):
     names, cols = [], []
-    for sec in ("characters", "scene", "colours"):
+    for sec in ("characters", "cast", "scene", "colours"):
         for name, c in key.get(sec, {}).items():
             if not name.startswith("_"):
                 names.append(name)
@@ -44,7 +44,8 @@ def colour_of(name, key):
         return [int(name[i:i + 2], 16) for i in (1, 3, 5)]
     if name.lower() in ("empty", "none"):
         return list(EMPTY)
-    for sec in ("characters", "scene", "colours"):
+    name = key.get("aliases", {}).get(name, name)  # names used by older plans
+    for sec in ("characters", "cast", "scene", "colours"):
         if name in key.get(sec, {}):
             return list(key[sec][name])
     return None
