@@ -40,14 +40,45 @@ def panel_masks(meta, cfg, labels=None, log=print):
         if p in out:
             continue
         small_ink = meta["panel_ink"][p] >= cfg["line_threshold"]
-        hull = ndimage.binary_fill_holes(cv2.dilate(small_ink.astype(np.uint8), np.ones((3, 3), np.uint8)))
+        closed = cv2.dilate(small_ink.astype(np.uint8), np.ones((3, 3), np.uint8)).astype(bool)
+        # a borderless panel that runs off the page (e.g. an arm coming in from the corner) is open at
+        # the page edge: close it there, along the stretch of edge its own lines reach
+        ys_, xs_ = np.where(small_ink)
+        if len(ys_):
+            hh, ww = closed.shape
+            if ys_.min() <= 2:
+                closed[0, xs_[ys_ <= 2].min():xs_[ys_ <= 2].max() + 1] = True
+            if ys_.max() >= hh - 3:
+                closed[-1, xs_[ys_ >= hh - 3].min():xs_[ys_ >= hh - 3].max() + 1] = True
+            if xs_.min() <= 2:
+                closed[ys_[xs_ <= 2].min():ys_[xs_ <= 2].max() + 1, 0] = True
+            if xs_.max() >= ww - 3:
+                closed[ys_[xs_ >= ww - 3].min():ys_[xs_ >= ww - 3].max() + 1, -1] = True
+        hull = ndimage.binary_fill_holes(closed)
         if hull.sum() == 0:
             continue
         big = cv2.resize(hull.astype(np.uint8), (w, h), interpolation=cv2.INTER_NEAREST)[:h, :w].astype(bool)
         if labels is not None:  # snap to whole regions for crisp edges
-            inside = np.bincount(labels.ravel(), weights=big.ravel(), minlength=labels.max() + 1)
-            total = np.bincount(labels.ravel(), minlength=labels.max() + 1)
-            big = (inside / np.maximum(total, 1) > 0.5)[labels]
+            nl = int(labels.max()) + 1
+            inside = np.bincount(labels.ravel(), weights=big.ravel(), minlength=nl)
+            total = np.bincount(labels.ravel(), minlength=nl)
+            sel = inside / np.maximum(total, 1) > 0.5
+            # also take areas outside every bordered panel whose outline is mostly this panel's own
+            # line art, e.g. a sleeve whose other side is a neighbouring panel's border
+            lab_s = labels[::PANEL_SCALE, ::PANEL_SCALE]
+            hs, ws = min(lab_s.shape[0], small_ink.shape[0]), min(lab_s.shape[1], small_ink.shape[1])
+            lab_s = lab_s[:hs, :ws].ravel()
+            own = np.bincount(lab_s, weights=meta["panel_ink"][p][:hs, :ws].ravel(), minlength=nl)
+            every = np.bincount(lab_s, weights=border[::PANEL_SCALE, ::PANEL_SCALE][:hs, :ws].ravel().astype(np.float32), minlength=nl)
+            for q in names:
+                every += np.bincount(lab_s, weights=meta["panel_ink"][q][:hs, :ws].ravel(), minlength=nl)
+            bordered = np.zeros((h, w), bool)
+            for q, m in out.items():
+                bordered |= m
+            in_b = np.bincount(labels.ravel(), weights=bordered.ravel(), minlength=nl) / np.maximum(total, 1)
+            sel |= (own > 0.5 * every) & (own > 20) & (in_b < 0.5)
+            sel[0] = False
+            big = sel[labels]
         out[p] = big
         for q in out:
             if q != p:

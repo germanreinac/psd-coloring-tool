@@ -30,9 +30,11 @@ def ink_from_psd(path, cfg, log=print):
     panel_re = re.compile(gcfg["panel_group_pattern"])
     skip = {s.lower() for s in gcfg["skip_groups"]}
     hint_word = cfg.get("hint_layer_word", "hint").lower()
+    back_names = {s.lower() for s in gcfg.get("background_groups", ["back", "bg", "background"])}
     psd = PSDImage.open(path)
     w, h = psd.size
     ink = np.zeros((h, w), np.float32)
+    back_ink = np.zeros((h, w), np.float32)  # background line art drawn behind the characters
     border = np.zeros((h, w), np.float32)  # panel borders only (layout group)
     small = (h // PANEL_SCALE + 1, w // PANEL_SCALE + 1)
     meta = {"size": (w, h), "panels": {}, "used_layers": [], "panel_ink": {}, "panel_paths": {}}
@@ -40,7 +42,7 @@ def ink_from_psd(path, cfg, log=print):
     def visible(layer):
         return gcfg["include_hidden"] or layer.visible
 
-    def collect(group, trail, panel):
+    def collect(group, trail, panel, back=False):
         for layer in group:
             if not visible(layer):
                 continue
@@ -48,14 +50,16 @@ def ink_from_psd(path, cfg, log=print):
             if layer.is_group():
                 if name.lower() in skip:
                     continue
-                collect(layer, trail + [name], panel)
+                collect(layer, trail + [name], panel, back or name.lower() in back_names)
                 continue
             if layer.kind not in ("pixel",) or layer.width == 0 or layer.height == 0:
                 continue
             if hint_word in name.lower():
                 continue  # colour instructions, not line art
             arr = layer.numpy()
-            _place(ink, arr, layer.left, layer.top, layer.opacity / 255.0)
+            if arr is None:
+                continue  # empty layer
+            _place(back_ink if back else ink, arr, layer.left, layer.top, layer.opacity / 255.0)
             meta["used_layers"].append("/".join(trail + [name]))
             if panel is None:
                 _place(border, arr, layer.left, layer.top, layer.opacity / 255.0)
@@ -90,6 +94,7 @@ def ink_from_psd(path, cfg, log=print):
     meta["hints"], meta["hint_layers"] = read_hint_layers(psd, cfg)
     log(f"  hint layers: {meta['hint_layers'] or 'none'} ({len(meta['hints'][0])} hint pixels)")
     meta["border"] = np.clip(border, 0, 1)
+    meta["back"] = np.clip(back_ink, 0, 1)
     return np.clip(ink, 0, 1), meta
 
 

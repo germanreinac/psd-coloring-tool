@@ -118,6 +118,41 @@ def bridge_gaps(line, cfg, log=print):
     return bridges.astype(bool)
 
 
+def combine_ink(ink, back, fronts, cfg, log=print):
+    """Put the background line art (the 'back' folders) behind the foreground line art.
+
+    Background lines are drawn right through the characters, because paint will cover them later.
+    `fronts` are rough outlines from the colour plan ("_front"), each drawn loosely around a character
+    through open background. Inside an outline, everything the character's own lines enclose is the
+    character, and background lines are dropped there so they don't cut the character into pieces."""
+    if back is None or not back.any():
+        return ink
+    if fronts:
+        thr = cfg["line_threshold"]
+        r = int(cfg.get("front_gap_px", 8))
+        k = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * r + 1, 2 * r + 1))
+        wall = cv2.dilate((ink >= thr).astype(np.uint8), k).astype(bool)
+        sil = np.zeros(ink.shape, bool)
+        for pts in fronts:
+            poly = np.array(pts, np.int32)
+            x0, y0 = np.maximum(poly.min(0) - 5, 0)
+            x1, y1 = poly.max(0) + 6
+            sub = (slice(y0, y1), slice(x0, x1))
+            m = np.zeros(wall[sub].shape, np.uint8)
+            cv2.fillPoly(m, [poly - [x0, y0]], 1)
+            edge = np.zeros_like(m)
+            cv2.polylines(edge, [poly - [x0, y0]], True, 1, 5)
+            free = m.astype(bool) & ~wall[sub]
+            n, lab = cv2.connectedComponents(free.astype(np.uint8), connectivity=4)
+            outside = np.zeros(n, bool)
+            outside[np.unique(lab[edge.astype(bool) & free])] = True
+            outside[0] = False
+            sil[sub] |= m.astype(bool) & ~outside[lab]
+        back = np.where(sil, 0, back)
+        log(f"  background lines hidden behind {len(fronts)} foreground figure(s)")
+    return ink + back * (1.0 - ink)
+
+
 def find_regions(ink, cfg, cuts=None, log=print):
     """cuts: hand-placed invisible lines from the colour plan ([[x, y], ...] each) that close gaps
     the automatic bridges can't, e.g. a wall that stops short of the ground."""

@@ -1,0 +1,525 @@
+{
+ "_help": "Chapter 2 Scene 5 page 13: morning at Chalky's house, the cat Fish Eyes. Numbers are the areas printed on output/<page>/check/regions/panel_XX.jpg.",
+ "_front": [
+  [
+   [
+    206,
+    1954
+   ],
+   [
+    206,
+    1395
+   ],
+   [
+    485,
+    1141
+   ],
+   [
+    510,
+    963
+   ],
+   [
+    866,
+    963
+   ],
+   [
+    916,
+    632
+   ],
+   [
+    1246,
+    594
+   ],
+   [
+    1830,
+    607
+   ],
+   [
+    1855,
+    988
+   ],
+   [
+    1627,
+    1064
+   ],
+   [
+    1551,
+    1192
+   ],
+   [
+    1551,
+    1675
+   ],
+   [
+    1424,
+    1954
+   ]
+  ]
+ ],
+ "lilac grey|p1 upper wall": [
+  8
+ ],
+ "blush|p1 wall": [
+  9
+ ],
+ "mauve|p1 wall drips": [
+  35,
+  32,
+  48,
+  63
+ ],
+ "dusty mauve|p1 lower wall": [
+  66,
+  77
+ ],
+ "steel blue|p1 fridge": [
+  44
+ ],
+ "cream|p1 handles": [
+  65,
+  68,
+  62,
+  67
+ ],
+ "aqua|p1 cabinet": [
+  40,
+  41
+ ],
+ "steel blue|p1 cabinet side": [
+  49,
+  43
+ ],
+ "terracotta|p1 pot on fridge": [
+  27,
+  20,
+  29
+ ],
+ "custard|p1 spoon": [
+  18
+ ],
+ "Skit fur|p1": [
+  89
+ ],
+ "Skit horns|p1": [
+  84,
+  83
+ ],
+ "Skit nose|p1": [
+  114,
+  431
+ ],
+ "Skit collar|p1": [
+  116
+ ],
+ "Skit sweater|p1": [
+  129,
+  137
+ ],
+ "Skit tag|p1": [
+  141
+ ],
+ "Skit shorts|p1": [
+  145
+ ],
+ "Dji hair|p1": [
+  46,
+  39,
+  36,
+  33
+ ],
+ "Dji skin|p1": [
+  56,
+  58,
+  99
+ ],
+ "Dji beak|p1": [
+  69
+ ],
+ "Dji shirt|p1": [
+  82
+ ],
+ "Dji skirt|p1": [
+  119
+ ],
+ "candy pink|p1 cat armchair": [
+  124,
+  122
+ ],
+ "raspberry|p1 armchair nose": [
+  135
+ ],
+ "dusty mauve|p1 sofa": [
+  130
+ ],
+ "lavender|p1 cushions": [
+  144,
+  146
+ ],
+ "Chalky fur|p1": [
+  85
+ ],
+ "Chalky patches|p1": [
+  101
+ ],
+ "Chalky jacket|p1": [
+  121
+ ],
+ "Chalky overalls|p1": [
+  142
+ ],
+ "pale sky|p1 window glass": [
+  57
+ ],
+ "rose wood|p1 window frame": [
+  38,
+  52,
+  92,
+  59,
+  93,
+  55
+ ],
+ "sand|p1 counter": [
+  138,
+  136
+ ],
+ "steel blue|p1 small kettle": [
+  128
+ ],
+ "Chalky fur|p2 hand": [
+  79
+ ],
+ "Chalky jacket|p2 sleeve": [
+  2,
+  3,
+  4,
+  61,
+  47
+ ],
+ "Chalky overalls|p2": [
+  6
+ ],
+ "steel blue|p2 kettle": [
+  42,
+  22,
+  16,
+  17
+ ],
+ "custard|p2 kettle knob": [
+  14,
+  80
+ ],
+ "dark wood|p2 kettle handle": [
+  64,
+  60
+ ],
+ "coral|p2 flames": [
+  107,
+  108,
+  90,
+  87
+ ],
+ "plum|p2 stove tray": [
+  103
+ ],
+ "charcoal|p2 stove top": [
+  115,
+  110,
+  95
+ ],
+ "jade|p2 bottle": [
+  7
+ ],
+ "rose wood|p2 table edge": [
+  19,
+  23
+ ],
+ "cream|p3 background": [
+  151
+ ],
+ "lilac grey|p3 wall": [
+  152
+ ],
+ "Fish Eyes fur|p3": [
+  167,
+  165,
+  186,
+  155
+ ],
+ "Fish Eyes nose|p3": [
+  178
+ ],
+ "Dji shirt|p3 eye whites": [
+  175,
+  177
+ ],
+ "cream|p4 background": [
+  156
+ ],
+ "lilac grey|p4 wall": [
+  154
+ ],
+ "Skit fur|p4": [
+  153,
+  157
+ ],
+ "Skit horns|p4": [
+  159,
+  166
+ ],
+ "Dji shirt|p4 eye whites": [
+  161,
+  171
+ ],
+ "Skit nose|p4": [
+  164
+ ],
+ "Skit collar|p4": [
+  176,
+  182,
+  183
+ ],
+ "Skit sweater|p4": [
+  181
+ ],
+ "Skit tag|p4": [
+  212
+ ],
+ "Skit hood|p4": [
+  184,
+  187,
+  200
+ ],
+ "Fish Eyes fur|p5": [
+  162,
+  169,
+  180,
+  174,
+  172,
+  173,
+  160
+ ],
+ "Fish Eyes nose|p5": [
+  163
+ ],
+ "lavender|p5 top book": [
+  185,
+  203,
+  188
+ ],
+ "cream|p5 pages": [
+  198,
+  197,
+  217,
+  210
+ ],
+ "coral|p5 second book": [
+  211,
+  205
+ ],
+ "periwinkle|p5 third book": [
+  201,
+  219
+ ],
+ "peach|p5 third book spine": [
+  208
+ ],
+ "jade|p5 bottom book": [
+  223,
+  221
+ ],
+ "cream|p6 background": [
+  224,
+  229
+ ],
+ "Fish Eyes fur|p6": [
+  260,
+  232,
+  225,
+  322,
+  271
+ ],
+ "Fish Eyes nose|p6": [
+  275,
+  255
+ ],
+ "lavender|p6 top book": [
+  273,
+  282
+ ],
+ "cream|p6 pages": [
+  296,
+  323
+ ],
+ "coral|p6 second book": [
+  308
+ ],
+ "periwinkle|p6 third book": [
+  316,
+  333
+ ],
+ "sand|p6 floor": [
+  328
+ ],
+ "cream|p7 background": [
+  226
+ ],
+ "Fish Eyes fur|p7": [
+  239,
+  236,
+  228,
+  266,
+  265,
+  269,
+  280,
+  284
+ ],
+ "Fish Eyes nose|p7": [
+  288,
+  290
+ ],
+ "cream|p8 background": [
+  227
+ ],
+ "sand|p8 floor": [
+  310,
+  315
+ ],
+ "Dji hair|p8": [
+  231,
+  233,
+  234
+ ],
+ "Dji skin|p8": [
+  244,
+  270,
+  272,
+  303,
+  309,
+  306
+ ],
+ "Dji beak|p8": [
+  253
+ ],
+ "Dji shirt|p8": [
+  248,
+  251,
+  261,
+  258,
+  259
+ ],
+ "Dji skirt|p8": [
+  287
+ ],
+ "Dji backpack|p8": [
+  252
+ ],
+ "Fish Eyes fur|p8": [
+  286,
+  314,
+  267
+ ],
+ "Fish Eyes nose|p8": [
+  298
+ ],
+ "Skit fur|p8": [
+  230,
+  302,
+  299,
+  327,
+  336
+ ],
+ "Skit horns|p8": [
+  235,
+  246
+ ],
+ "Skit nose|p8": [
+  254
+ ],
+ "Dji shirt|p8 Skit eye": [
+  250
+ ],
+ "Skit collar|p8": [
+  263,
+  276
+ ],
+ "Skit tag|p8": [
+  289
+ ],
+ "Skit sweater|p8": [
+  268,
+  283,
+  279,
+  292
+ ],
+ "Skit hood|p8": [
+  257
+ ],
+ "Skit shorts|p8": [
+  297
+ ],
+ "cream|p9 background": [
+  343
+ ],
+ "lilac grey|p9 wall": [
+  349
+ ],
+ "Skit fur|p9": [
+  345,
+  401
+ ],
+ "Skit horns|p9": [
+  350,
+  351,
+  383,
+  394
+ ],
+ "Skit nose|p9": [
+  366
+ ],
+ "Dji shirt|p9 eye whites": [
+  358,
+  398
+ ],
+ "Skit collar|p9": [
+  367,
+  416
+ ],
+ "Skit sweater|p9": [
+  376,
+  387
+ ],
+ "Skit shorts|p9": [
+  412
+ ],
+ "cream|p10 background": [
+  347
+ ],
+ "lilac grey|p10 wall": [
+  346
+ ],
+ "Dji hair|p10": [
+  356,
+  348,
+  391
+ ],
+ "Dji skin|p10": [
+  353,
+  369,
+  380,
+  379
+ ],
+ "Dji beak|p10": [
+  362,
+  407
+ ],
+ "Dji shirt|p10": [
+  359,
+  373,
+  406
+ ],
+ "Dji skirt|p10": [
+  389,
+  395,
+  417
+ ]
+}

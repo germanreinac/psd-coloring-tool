@@ -59,15 +59,16 @@ def main():
     ink, meta = extract.ink_from_psd(work, cfg)
 
     key = palette.load(os.path.join(HERE, "palette.json"))
-    plan, cuts = None, None
+    plan, cuts, fronts = None, None, None
     plan_path = args.map or os.path.join(HERE, "maps", f"{name}.json")
     if os.path.exists(plan_path):
         print(f"Using the colour plan {os.path.basename(plan_path)}")
         page_map = palette.load(plan_path)
         plan = hints.read_plan(page_map, key, meta["size"])
-        cuts = page_map.get("_cuts")
+        cuts, fronts = page_map.get("_cuts"), page_map.get("_front")
 
     print("Finding areas")
+    ink = regions.combine_ink(ink, meta.pop("back", None), fronts, cfg)
     labels, line = regions.find_regions(ink, cfg, cuts)
     n = int(labels.max())
 
